@@ -12,7 +12,6 @@ export async function POST(req: Request) {
     const prompt = `Analyze the company with domain ${domain}. Provide a detailed analysis including:
     1. Company introduction (punchline, industry sector, location, employee count, founding year, company type, tagline, and specialties)
     2. Top 5 competitors with descriptions and key differences
-    3. Statistics about headcount and web traffic
 
     Format the response as a JSON object with the following structure:
     {
@@ -34,14 +33,7 @@ export async function POST(req: Request) {
           "description": "",
           "differences": []
         }
-      ],
-      "statistics": {
-        "headcount": 0,
-        "webTraffic": {
-          "monthly": "",
-          "trend": ""
-        }
-      }
+      ]
     }`
 
     const completion = await openai.chat.completions.create({

@@ -22,21 +22,12 @@ interface Competitor {
   differences: string[]
 }
 
-interface Statistics {
-  headcount: number
-  webTraffic: {
-    monthly: string
-    trend: string
-  }
-}
-
 interface AnalysisData {
   companyInfo: CompanyInfo
   competitors: Competitor[]
-  statistics: Statistics
 }
 
-const InfoItem = ({ icon: Icon, label, value }: { icon: any, label: string, value: string }) => (
+const InfoItem = ({ icon: Icon, label, value }: { icon: any, label: string, value: string | React.ReactNode }) => (
   <div className="flex items-start gap-2">
     <div className="p-1.5 bg-blue-50 rounded-lg">
       <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-500" />
@@ -146,32 +137,6 @@ export default function CompanyAnalysis({ data }: { data: AnalysisData }) {
             </div>
           ))}
         </div>
-      </Card>
-
-      {/* Statistics Block */}
-      <Card className="p-4 sm:p-6 hover:shadow-lg transition-shadow duration-200">
-        <Title className="text-xl sm:text-2xl mb-4 sm:mb-6">Competitor Statistics</Title>
-        <Grid numItems={1} numItemsSm={2} className="gap-4 sm:gap-6">
-          <Card className="bg-green-50">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="p-1.5 sm:p-2 bg-green-100 rounded-lg">
-                <UserGroupIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-green-600" />
-              </div>
-              <Text className="font-medium text-green-900 text-sm sm:text-base">Employee Headcount</Text>
-            </div>
-            <Metric className="mt-3 sm:mt-4 text-green-900 text-xl sm:text-2xl">{data.statistics.headcount.toLocaleString()}</Metric>
-          </Card>
-          <Card className="bg-blue-50">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="p-1.5 sm:p-2 bg-blue-100 rounded-lg">
-                <GlobeAltIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-600" />
-              </div>
-              <Text className="font-medium text-blue-900 text-sm sm:text-base">Monthly Web Traffic</Text>
-            </div>
-            <Metric className="mt-3 sm:mt-4 text-blue-900 text-xl sm:text-2xl">{data.statistics.webTraffic.monthly}</Metric>
-            <Text className="text-blue-700 text-sm sm:text-base">Trend: {data.statistics.webTraffic.trend}</Text>
-          </Card>
-        </Grid>
       </Card>
     </div>
   )

@@ -88,7 +88,7 @@ export default function Home() {
         </div>
 
         {isLoading && (
-          <div className="text-center bg-white rounded-xl shadow-lg p-6 sm:p-8 max-w-2xl mx-auto">
+          <div className="text-center bg-white rounded-xl shadow-lg p-6 sm:p-8 max-w-2xl mx-auto mb-8">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
             <p className="mt-4 text-lg text-gray-600">Analyzing company data...</p>
             <p className="text-sm text-gray-500 mt-2">This may take a few moments</p>
