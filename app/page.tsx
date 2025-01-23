@@ -98,7 +98,13 @@ export default function Home() {
         const differencesData = await differencesResponse.json()
 
         return {
-          ...competitorInfo.competitor,
+          name: competitorInfo.competitor.name,
+          description: competitorInfo.competitor.description,
+          industry: competitorInfo.competitor.industry,
+          location: competitorInfo.competitor.location,
+          employees: competitorInfo.competitor.employees,
+          foundingYear: competitorInfo.competitor.foundingYear,
+          companyType: competitorInfo.competitor.companyType,
           differences: differencesData.differences.differencesList
         }
       })
@@ -111,10 +117,7 @@ export default function Home() {
           ...companyInfo,
           ...detailsData.companyDetails
         },
-        competitors: competitors.map((competitor) => ({
-          name: competitor.name,
-          differences: competitor.differences
-        }))
+        competitors
       })
       setShowResults(true)
     } catch (err) {
